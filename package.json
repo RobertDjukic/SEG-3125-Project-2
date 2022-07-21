@@ -1,7 +1,7 @@
 {
   "name": "waterpolo",
   "version": "0.1.0",
-  "homepage": "https://RobertDjukic.github.io/SEG-3103-Project-2-Step-3",
+  "homepage": "https://RobertDjukic.github.io/SEG-3125-Project-2",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.3",

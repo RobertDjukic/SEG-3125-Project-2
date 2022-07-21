@@ -10,23 +10,10 @@ export default function AboutScreen() {
     const [email, setEmail] = React.useState('');
     const [phone, setPhone] = React.useState('');
     const [address, setAddress] = React.useState('');
-    var flag = false;
-    var counter = 0;
-
-    
-    const handleClick = event => {
-        event.preventDefault();
-        if(program.trim().length !== 0){
-            counter++;
-        }
-        if(name.trim().length !== 0){
-            counter++;
-        }
-        if(counter === 2){
-            flag = true;
-        }
-        
-    };
+    const [namepay, setNamePay] = React.useState('');
+    const [card, setCard] = React.useState('');
+    const [expirey, setExpirey] = React.useState('');
+    const [cvv, setCVV] = React.useState('');
 
     return (
         <div>
@@ -180,25 +167,25 @@ export default function AboutScreen() {
                                         <div class="col-12">
                                             <div class="d-flex flex-column">
                                                 <p class="text mb-1">* Person Name</p>
-                                                <input class="form-control mb-3" type="text" placeholder="Full Name" value=""></input>
+                                                <input class="form-control mb-3" onInput={e => {setNamePay(e.target.value)}} type="text" placeholder="Full Name"></input>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="d-flex flex-column">
                                                 <p class="text mb-1">* Card Number</p>
-                                                <input class="form-control mb-3" type="text" placeholder="1234 5678 435678"></input>
+                                                <input class="form-control mb-3" onInput={e => {setCard(e.target.value)}} type="text" placeholder="1234 5678 435678"></input>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="d-flex flex-column">
                                                 <p class="text mb-1">* Expiry</p>
-                                                <input class="form-control mb-3" type="text" placeholder="MM/YYYY"></input>
+                                                <input class="form-control mb-3" onInput={e => {setExpirey(e.target.value)}} type="text" placeholder="MM/YYYY"></input>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="d-flex flex-column">
                                                 <p class="text mb-1">* CVV/CVC</p>
-                                                <input class="form-control mb-3 pt-2 " type="password" placeholder="***"></input>
+                                                <input class="form-control mb-3 pt-2 " onInput={e => {setCVV(e.target.value)}} type="password" placeholder="***"></input>
                                             </div>
                                             <br/>
                                         </div>
@@ -210,17 +197,17 @@ export default function AboutScreen() {
                     
                     
                     <div className="d-flex justify-content-end me-4 mt-4">
-                        <button type="submit" className="btn btn-primary ms-2" data-enchanter="finish" data-bs-toggle="modal" data-bs-target="#modal1" onClick={handleClick}>Finish</button>
+                        <button type="submit" className="btn btn-primary ms-2" data-enchanter="finish" data-bs-toggle="modal" data-bs-target="#modal1">Finish</button>
                     </div>
                     <div className="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal1" aria-hidden="true">
                         <div className="modal-dialog">
                           <div className="modal-content ">
                             <div className="modal-header">
-                              <h5 className="modal-title text-center" id="exampleModalLabel">Appointment Confirmed</h5>
+                              <h5 className="modal-title text-center" id="exampleModalLabel">{(name, email, address, phone, namepay, card, expirey, cvv) ? "Registration Successful": "Regirstration Not Completed"}</h5>
                               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div className="modal-body">
-                              {(name) ? "You are registered": "You are not registered"}
+                              {(name, email, address, phone, namepay, card, expirey, cvv) ? "You have successfully reigstered for your program": "You must fill in all inputs that are marked with an asterisks"}
                             </div>
                             <div className="modal-footer">
                               <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
